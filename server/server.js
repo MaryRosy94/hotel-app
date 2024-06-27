@@ -7,6 +7,7 @@ const { errorHandler } = require("./middleware/errorHandler");
 const bookingRoutes = require("./routes/bookingRoutes");
 const userRoutes = require("./routes/userRoutes");
 const cookieParser = require("cookie-parser");
+const { auth } = require("./middleware/authMiddleware");
 
 const port = process.env.PORT || 5000;
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use("/api/rooms", roomRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/users", userRoutes);
+app.use("/auth", auth);
 
 app.use(errorHandler);
 

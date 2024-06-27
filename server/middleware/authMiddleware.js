@@ -19,7 +19,7 @@ const auth = async (req, res, next) => {
 
     req.user = user;
 
-    next();
+    return res.json(user);
   } catch (error) {
     console.log(error.message);
     return res.status(400).json({ message: "no token" });
