@@ -17,11 +17,9 @@ const getBookings = async (req, res, next) => {
 // create booking
 const createBooking = async (req, res, next) => {
   try {
-    const booking = await Booking.create(req.body);
-    if (!booking) {
-      res.status(400);
-      throw new Error("Non riesco a creare la prenotazione");
-    }
+    const booking = new Booking(req.body);
+    await booking.validate(); // Validazione prima di salvare
+    const savedBooking = await booking.save();
 
     return res.status(201).json(booking);
   } catch (error) {
@@ -38,6 +36,7 @@ const updateBooking = async (req, res, next) => {
       },
       {
         new: true,
+        runValidators: true, // Assicura la validazione durante l'aggiornamento
       }
     );
 

@@ -1,29 +1,22 @@
 const Room = require("../models/roomModel");
 
-const getRooms = async (req, res) => {
+const getRooms = async (req, res, next) => {
   try {
     const rooms = await Room.find();
-
-    if (!rooms) {
-      res.status(400);
-      throw new Error("rooms not found");
-    }
     return res.status(200).json(rooms);
   } catch (error) {
     next(error);
   }
 };
 
-// create room
+// Create room
 const createRoom = async (req, res, next) => {
   try {
-    const room = await Room.create(req.body);
+    const room = new Room(req.body);
+    await room.validate(); // Validazione prima di salvare
 
-    if (!room) {
-      res.status(400);
-      throw new Error("C'è un problema nella creazione");
-    }
-    return res.status(201).json(room);
+    const savedRoom = await room.save();
+    return res.status(201).json(savedRoom);
   } catch (error) {
     next(error);
   }
@@ -36,7 +29,7 @@ const getRoom = async (req, res, next) => {
 
     if (!room) {
       res.status(400);
-      throw new Error("room not found");
+      throw new Error("room non trovata");
     }
 
     return res.status(200).json(room);
@@ -53,7 +46,7 @@ const updateRoom = async (req, res, next) => {
       {
         $set: req.body,
       },
-      { new: true }
+      { new: true, runValidators: true } // Esegui validazione durante l'update
     );
 
     if (!updatedRoom) {

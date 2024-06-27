@@ -20,29 +20,28 @@ Content-Type: application/json
 
 # get single room 
 ### 
-GET http://localhost:5000/api/rooms/667c148d7b9c56f8b6c229d0
+GET http://localhost:5000/api/rooms/667c0977f44cca90639fc9fa
 
 # update room 
 ### 
-PUT http://localhost:5000/api/rooms/667c148d7b9c56f8b6c229d0
+PUT http://localhost:5000/api/rooms/667c0977f44cca90639fc9fa 
 Content-Type: application/json
 
 {
-"name": "updated name", 
-"price": 10000
+"name": "updated name", "price": 10000
 }
 
 #delete room 
 ### 
-DELETE http://localhost:5000/api/rooms/667c148d7b9c56f8b6c229d0
+DELETE http://localhost:5000/api/rooms/667c0977f44cca90639fc9fa
 
 # get bookings 
 ### 
 GET http://localhost:5000/api/bookings
 
-# get single booking
-###
-GET http://localhost:5000/api/bookings/667c14fb7b9c56f8b6c229d8
+# get single booking 
+### 
+GET http://localhost:5000/api/bookings/667c156c7b9c56f8b6c229e7
 
 #create booking 
 ### 
@@ -50,23 +49,56 @@ POST http://localhost:5000/api/bookings
 Content-Type: application/json
 
 {
-"roomId": "667c08fe4904505ecdd71309", 
-"name": "marco rossi", 
-"email": "marcorossi@gmail.com", 
+"roomId": "65d636b92bf1aa39d062068a", 
+"name": "lebron james", 
+"email": "kofiarhin@gmail.com", 
 "checkInDate": "2024-010-28", 
 "checkOutDate": "2024-010-29"
 }
 
-# update booking
-###
-PUT http://localhost:5000/api/bookings/667c14537b9c56f8b6c229c0
+#update booking 
+### 
+PUT http://localhost:5000/api/bookings/667c156c7b9c56f8b6c229e7
 Content-Type: application/json
 
 {
-    "name": "update name",
-    "email": "updated@gmail.com"
+"name": "updated name", 
+"email": "updated@gmail.com"
 }
 
-#delete booking
-###
-DELETE http://localhost:5000/api/bookings/667c14537b9c56f8b6c229c0
+#delete 
+### 
+DELETE http://localhost:5000/api/bookings/667c156c7b9c56f8b6c229e7
+
+#get users 
+### 
+GET http://localhost:5000/api/users
+
+#create user 
+### 
+POST http://localhost:5000/api/users 
+Content-Type: application/json
+
+{
+"name": "marco rossi", 
+"email": "m.rossi@gmail.com", 
+"password": "password"
+}
+
+#login user 
+### 
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+"email": "m.rossi@gmail.com", 
+"password": "password"
+}
+
+#logout user 
+### 
+GET http://localhost:5000/api/users/logout
+
+#check auth 
+### 
+GET http://localhost:5000/auth
