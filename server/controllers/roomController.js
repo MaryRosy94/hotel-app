@@ -1,22 +1,29 @@
 const Room = require("../models/roomModel");
 
-const getRooms = async (req, res, next) => {
+const getRooms = async (req, res) => {
   try {
     const rooms = await Room.find();
+
+    if (!rooms) {
+      res.status(400);
+      throw new Error("Non esistono stanze");
+    }
     return res.status(200).json(rooms);
   } catch (error) {
     next(error);
   }
 };
 
-// Create room
+// create room
 const createRoom = async (req, res, next) => {
   try {
-    const room = new Room(req.body);
-    await room.validate(); // Validazione prima di salvare
+    const room = await Room.create(req.body);
 
-    const savedRoom = await room.save();
-    return res.status(201).json(savedRoom);
+    if (!room) {
+      res.status(400);
+      throw new Error("C'è un problema nella creazione");
+    }
+    return res.status(201).json(room);
   } catch (error) {
     next(error);
   }
@@ -29,7 +36,7 @@ const getRoom = async (req, res, next) => {
 
     if (!room) {
       res.status(400);
-      throw new Error("room non trovata");
+      throw new Error("Non esiste la stanza");
     }
 
     return res.status(200).json(room);
@@ -46,14 +53,13 @@ const updateRoom = async (req, res, next) => {
       {
         $set: req.body,
       },
-      { new: true, runValidators: true } // Esegui validazione durante l'update
+      { new: true }
     );
 
     if (!updatedRoom) {
       res.status(400);
-      throw new Error("Non puoi caricare la stanza");
+      throw new Error("Non si può aggiornare la stanza");
     }
-
     return res.status(200).json(updatedRoom);
   } catch (error) {
     next(error);
@@ -63,10 +69,9 @@ const updateRoom = async (req, res, next) => {
 const deleteRoom = async (req, res) => {
   try {
     const room = await Room.findByIdAndDelete(req.params.id);
-
     if (!room) {
       res.status(400);
-      throw new Error("Stanza cancellata");
+      throw new Error("Non si può cancellare la stanza");
     }
 
     return res.status(200).json({ id: req.params.id });

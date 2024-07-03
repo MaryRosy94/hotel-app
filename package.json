@@ -7,18 +7,23 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server/server.js",
     "admin": "npm run start --prefix admin",
-    "dev": "concurrently \"npm run server\" \"npm run admin\""
+    "client": "npm run start --prefix client",
+    "dev-admin": "concurrently \"npm run server\" \"npm run admin\"",
+    "dev-client": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.4"
+    "mongoose": "^8.4.4",
+    "multer": "^1.4.5-lts.1"
   }
 }

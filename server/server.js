@@ -19,11 +19,10 @@ app.use(cookieParser());
 app.use(express.json());
 
 // setup routes
-
+app.use("/auth", auth);
 app.use("/api/rooms", roomRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/users", userRoutes);
-app.use("/auth", auth);
 
 app.use(errorHandler);
 

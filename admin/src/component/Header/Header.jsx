@@ -14,15 +14,16 @@ const Header = () => {
   return (
     <header className="main-header">
       <div className="container">
-        <Link>
+        <Link to="/">
           <h1 className="logo">Hotel</h1>
         </Link>
 
         <nav>
-          <Link to="/">Home</Link>
+          <Link to="/rooms">Camere</Link>
           {user ? (
             <>
-              <Link to="/rooms/create">Create</Link>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/rooms/create">Crea Camera</Link>
               <button onClick={handleLogout}>Logout</button>
             </>
           ) : (

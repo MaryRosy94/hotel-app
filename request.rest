@@ -7,9 +7,9 @@ POST http://localhost:5000/api/rooms
 Content-Type: application/json
 
 {
-"name": "test room 3", 
-"price": 500, 
-"desc": "some description", 
+"name": "test room 2", 
+"price": 200, 
+"desc": "descrizione", 
 "roomNumbers":[{
 
 "number": 101, 
@@ -20,11 +20,11 @@ Content-Type: application/json
 
 # get single room 
 ### 
-GET http://localhost:5000/api/rooms/667c0977f44cca90639fc9fa
+GET http://localhost:5000/api/rooms/6682f09dbc93cd552670cc81
 
 # update room 
 ### 
-PUT http://localhost:5000/api/rooms/667c0977f44cca90639fc9fa 
+PUT http://localhost:5000/api/rooms/6681736b0299b8788342a172 
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 #delete room 
 ### 
-DELETE http://localhost:5000/api/rooms/667c0977f44cca90639fc9fa
+DELETE http://localhost:5000/api/rooms/6681736b0299b8788342a172
 
 # get bookings 
 ### 
@@ -41,7 +41,7 @@ GET http://localhost:5000/api/bookings
 
 # get single booking 
 ### 
-GET http://localhost:5000/api/bookings/667c156c7b9c56f8b6c229e7
+GET http://localhost:5000/api/bookings/667c158b7b9c56f8b6c229e9
 
 #create booking 
 ### 
@@ -58,7 +58,7 @@ Content-Type: application/json
 
 #update booking 
 ### 
-PUT http://localhost:5000/api/bookings/667c156c7b9c56f8b6c229e7
+PUT http://localhost:5000/api/bookings/667c158b7b9c56f8b6c229e9
 Content-Type: application/json
 
 {
@@ -68,7 +68,7 @@ Content-Type: application/json
 
 #delete 
 ### 
-DELETE http://localhost:5000/api/bookings/667c156c7b9c56f8b6c229e7
+DELETE http://localhost:5000/api/bookings/65d636b92bf1aa39d062068a
 
 #get users 
 ### 

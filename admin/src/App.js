@@ -5,6 +5,11 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Header from "./component/Header/Header";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import CreateRoom from "./Pages/CreateRoom";
+import Rooms from "./Pages/Rooms/Rooms";
+import Room from "./Pages/Room/Room";
+import EditRoom from "./Pages/EditRoom/EditRoom";
+import Booking from "./Pages/Booking/Booking";
 
 const App = () => {
   return (
@@ -16,6 +21,11 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/rooms/create" element={<CreateRoom />} />
+          <Route path="/rooms/all/:id" element={<Room />} />
+          <Route path="/edit/rooms/:id" element={<EditRoom />} />
+          <Route path="/bookings/:id" element={<Booking />} />
         </Routes>
       </Router>
     </div>
