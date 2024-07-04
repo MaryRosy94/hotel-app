@@ -6,11 +6,12 @@ const {
   loginUser,
   logoutUser,
 } = require("../controllers/userController");
+const { auth } = require("../middleware/authMiddleware");
 
 const router = Router();
 
 //get all users
-router.get("/", getUsers);
+router.get("/", auth, getUsers);
 
 //create users
 router.post("/", createUser);

@@ -160,7 +160,7 @@ export const roomSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.rooms = state.rooms.filter(
-          (room) => room._id != action.payload.id
+          (room) => room._id !== action.payload.id
         );
       })
       .addCase(deleteRoom.rejected, (state, action) => {
